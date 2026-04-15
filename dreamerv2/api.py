@@ -26,8 +26,12 @@ from common import TerminalOutput
 from common import JSONLOutput
 from common import TensorBoardOutput
 
-configs = yaml.safe_load(
-    (pathlib.Path(__file__).parent / 'configs.yaml').read_text())
+def load_yaml_config(filename):
+  loader = yaml.YAML(typ='safe', pure=True)
+  return loader.load(pathlib.Path(filename).read_text())
+
+
+configs = load_yaml_config(pathlib.Path(__file__).parent / 'configs.yaml')
 defaults = common.Config(configs.pop('defaults'))
 
 

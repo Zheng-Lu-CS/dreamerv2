@@ -11,7 +11,12 @@ setuptools.setup(
     long_description_content_type='text/markdown',
     packages=['dreamerv2', 'dreamerv2.common'],
     package_data={'dreamerv2': ['configs.yaml']},
-    entry_points={'console_scripts': ['dreamerv2=dreamerv2.train:main']},
+    entry_points={'console_scripts': [
+        'dreamerv2=dreamerv2.train:main',
+        'dreamerv2-check-env=dreamerv2.check_env:main',
+        'dreamerv2-export-demo=dreamerv2.export_demo:main',
+        'dreamerv2-visualize-demo=dreamerv2.visualize_demo:main',
+    ]},
     install_requires=[
         'gym[atari]', 'atari_py', 'crafter', 'dm_control', 'ruamel.yaml',
         'tensorflow', 'tensorflow_probability'],

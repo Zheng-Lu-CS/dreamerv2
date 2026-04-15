@@ -166,3 +166,40 @@ debug:
   train_steps: 1
   replay: {minlen: 10, maxlen: 30}
   dataset: {batch: 10, length: 10}
+
+atari_demo_pong:
+
+  task: atari_pong
+  steps: 5e5
+  eval_every: 2.5e4
+  log_every: 2e3
+  eval_eps: 1
+  prefill: 5000
+  pretrain: 1
+  train_every: 8
+  train_steps: 1
+  expl_until: 0
+  replay: {capacity: 5e5, ongoing: False, minlen: 50, maxlen: 50, prioritize_ends: True}
+
+atari_demo_pong_smoke:
+
+  task: atari_pong
+  steps: 3e4
+  eval_every: 5e3
+  log_every: 1e3
+  eval_eps: 1
+  prefill: 1000
+  pretrain: 1
+  train_every: 8
+  train_steps: 1
+  replay: {capacity: 1e5, ongoing: False, minlen: 30, maxlen: 30, prioritize_ends: True}
+  dataset: {batch: 8, length: 30}
+
+atari_demo_pong_extend:
+
+  task: atari_pong
+  steps: 1e6
+  eval_every: 5e4
+  log_every: 5e3
+  eval_eps: 1
+  prefill: 5000

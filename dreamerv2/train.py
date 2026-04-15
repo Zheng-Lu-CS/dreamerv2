@@ -27,10 +27,14 @@ import agent
 import common
 
 
+def load_yaml_config(filename):
+  loader = yaml.YAML(typ='safe', pure=True)
+  return loader.load(pathlib.Path(filename).read_text())
+
+
 def main():
 
-  configs = yaml.safe_load((
-      pathlib.Path(sys.argv[0]).parent / 'configs.yaml').read_text())
+  configs = load_yaml_config(pathlib.Path(sys.argv[0]).parent / 'configs.yaml')
   parsed, remaining = common.Flags(configs=['defaults']).parse(known_only=True)
   config = common.Config(configs['defaults'])
   for name in parsed.configs:
